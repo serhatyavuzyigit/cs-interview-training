@@ -75,4 +75,24 @@ public class LinkedList<E>{
     	System.out.println(content);
     }
 
+	// getter and setter methods for instance variables
+	public void setHead(Node<E> head){
+		this.head = head;
+	}
+
+	public Node<E> getHead(){
+		return head;
+	}
+
+	public void setTail(Node<E> tail){
+		this.tail = tail;
+	}
+
+	public Node<E> getTail(){
+		return tail;
+	}
+
+	public int getSize(){
+		return size;
+	}
 }

@@ -1,20 +1,34 @@
+import java.util.HashMap;
+
 public class RemoveDups{
 
 	public static void main(String [] args){
 
 		LinkedList<Integer> list = new LinkedList<>();
-		list.add(5);
-		list.add(12);
-		list.add(67);
-		list.add(55);
-		list.add(989);
-		list.add(8987);
+		System.out.println("Before removing the duplicates");
+		list.add(1);
+		list.add(13);
+		list.add(27);
+		list.add(13);
+		list.add(41);
+		list.add(52);
+		list.add(41);
+		list.printList();
 
-		list.remove(55);
-		list.remove(12);
-		list.remove(989);
-		list.remove(5);
-		list.remove(8987);
+		System.out.println("After removing the duplicates");
+		// removing operation
+		HashMap<Integer,Node<Integer>> map = new HashMap<>();
+		Node<Integer> tempNode = list.getHead();
+		Node<Integer> prevNode = null;
+		while(tempNode != null){
+			if(!map.containsKey(tempNode.getData())){
+				map.put(tempNode.getData(),tempNode);
+				prevNode = tempNode;
+			} else{
+				prevNode.setNext(tempNode.getNext());
+			}
+			tempNode = tempNode.getNext();
+		}
 		list.printList();
 	}
 }
