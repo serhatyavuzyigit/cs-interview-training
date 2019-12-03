@@ -1,42 +1,5 @@
 public class LinkedList<E>{
 
-    private static class Node<E>{
-        
-        private E data;				// The data that node stores.
-
-        private Node<E> next;		// The address of next node 
-
-
-       	// constructor for Node class
-        public Node(E data, Node<E> next) {
-        	this.data = data;
-        	this.next = next;
-        }
-
-        // getter and setter methods for instance variables
-        public void setData(E data){
-        	this.data = data;
-        }
-
-        public E getData(){
-        	return data;
-        }
-
-        public void setNext(Node<E> next){
-        	this.next = next;
-        }
-
-        public Node<E> getNext(){
-        	return next;
-        }
-
-        // toString for displaying the data in node
-        public String toString(){
-        	return data.toString();
-        }
-
-    }
-
     private Node<E> head ;			// first node of linked list
 
     private Node<E> tail;			// last node of linked list
@@ -86,7 +49,7 @@ public class LinkedList<E>{
     	} else{
     		// removing the node from somewhere that is not head and tail
     		tempNode = head;
-    		tempNodeNext = head.getNext();
+    		Node<E> tempNodeNext = head.getNext();
     		while(!tempNodeNext.getData().equals(data)){
     			tempNode = tempNode.getNext();
     			tempNodeNext = tempNodeNext.getNext();
@@ -106,7 +69,8 @@ public class LinkedList<E>{
     			content += tempNode.getData().toString();
     		} else{
     			content += tempNode.getData().toString() + " -> ";
-    		}
+			}
+			tempNode = tempNode.getNext();
     	}
     	System.out.println(content);
     }
