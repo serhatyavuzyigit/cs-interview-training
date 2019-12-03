@@ -16,7 +16,6 @@ public class RemoveDups{
 		list.printList();
 
 		System.out.println("After removing the duplicates");
-		// removing operation
 		HashMap<Integer,Node<Integer>> map = new HashMap<>();
 		Node<Integer> tempNode = list.getHead();
 		Node<Integer> prevNode = null;
