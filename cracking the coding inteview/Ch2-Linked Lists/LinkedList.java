@@ -1,4 +1,3 @@
-import java.util.HashMap;
 
 public class LinkedList{
 
@@ -62,22 +61,6 @@ public class LinkedList{
     	size--;
     }
 /*
-    // removing duplicates nodes from list
-    public void removeDups(){
-      HashMap<E,Node> map = new HashMap<>();
-      Node tempNode = head;
-      Node prevNode = null;
-      while(tempNode != null){
-        if(!map.containsKey(tempNode.getData())){
-          map.put(tempNode.getData(),tempNode);
-          prevNode = tempNode;
-        } else{
-          prevNode.setNext(tempNode.getNext());
-        }
-        tempNode = tempNode.getNext();
-      }
-    }
-
     // returns the last k'th element from list
     public int returnKthToLast(int k){
       Node p1 = head;

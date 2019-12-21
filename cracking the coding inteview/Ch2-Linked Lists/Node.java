@@ -1,6 +1,6 @@
 public class Node{
 
-	    private int data;				// The data that node stores.
+	private int data;	        // The data that node stores.
 
         private Node next;		// The address of next node
 
