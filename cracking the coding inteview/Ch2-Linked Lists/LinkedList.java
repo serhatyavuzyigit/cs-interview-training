@@ -1,8 +1,10 @@
-public class LinkedList<E>{
+import java.util.HashMap;
 
-    private Node<E> head ;			// first node of linked list
+public class LinkedList{
 
-    private Node<E> tail;			// last node of linked list
+    private Node head ;			// first node of linked list
+
+    private Node tail;			// last node of linked list
 
     private int size;				// size of linked list
 
@@ -14,8 +16,8 @@ public class LinkedList<E>{
     }
 
     // adding new node to end of te linked list
-    public void add(E data){
-    	Node<E> element = new Node(data,null);
+    public void add(int data){
+    	Node element = new Node(data,null);
     	if(size == 0){
     		head = element;
     		tail = element;
@@ -31,14 +33,14 @@ public class LinkedList<E>{
     }
 
     // removing the node from linked list with given data
-    public void remove(E data){
-    	Node<E> tempNode;
-    	if(head.getData().equals(data)){
+    public void remove(int data){
+    	Node tempNode;
+    	if(head.getData() == data){
     		// removing the head
     		tempNode = head.getNext();
     		head.setNext(null);
     		head = tempNode;
-    	} else if(tail.getData().equals(data)){
+    	} else if(tail.getData() == data){
     		// removing the tail
     		tempNode = head;
     		while(tempNode.getNext() != tail){
@@ -49,8 +51,8 @@ public class LinkedList<E>{
     	} else{
     		// removing the node from somewhere that is not head and tail
     		tempNode = head;
-    		Node<E> tempNodeNext = head.getNext();
-    		while(!tempNodeNext.getData().equals(data)){
+    		Node tempNodeNext = head.getNext();
+    		while(tempNodeNext.getData() != data){
     			tempNode = tempNode.getNext();
     			tempNodeNext = tempNodeNext.getNext();
     		}
@@ -59,40 +61,74 @@ public class LinkedList<E>{
 
     	size--;
     }
+/*
+    // removing duplicates nodes from list
+    public void removeDups(){
+      HashMap<E,Node> map = new HashMap<>();
+      Node tempNode = head;
+      Node prevNode = null;
+      while(tempNode != null){
+        if(!map.containsKey(tempNode.getData())){
+          map.put(tempNode.getData(),tempNode);
+          prevNode = tempNode;
+        } else{
+          prevNode.setNext(tempNode.getNext());
+        }
+        tempNode = tempNode.getNext();
+      }
+    }
 
+    // returns the last k'th element from list
+    public int returnKthToLast(int k){
+      Node p1 = head;
+      Node p2 = head;
+
+      for(int i=0;i<k;i++){
+        p1 = p1.getNext();
+      }
+
+      while(p1 != null){
+        p1 = p1.getNext();
+        p2 = p2.getNext();
+      }
+
+      return p2.getData();
+    }
+*/
     // displaying the content of linked list
     public void printList(){
     	String content = "";
-    	Node<E> tempNode = head;
+    	Node tempNode = head;
     	while(tempNode != null){
     		if(tempNode == tail){
-    			content += tempNode.getData().toString();
+    			content += tempNode.getData() + "";
     		} else{
-    			content += tempNode.getData().toString() + " -> ";
+    			content += tempNode.getData() + " -> ";
 			}
 			tempNode = tempNode.getNext();
     	}
     	System.out.println(content);
     }
 
-	// getter and setter methods for instance variables
-	public void setHead(Node<E> head){
-		this.head = head;
-	}
 
-	public Node<E> getHead(){
-		return head;
-	}
+  	// getter and setter methods for instance variables
+  	public void setHead(Node head){
+  		this.head = head;
+  	}
 
-	public void setTail(Node<E> tail){
-		this.tail = tail;
-	}
+  	public Node getHead(){
+  		return head;
+  	}
 
-	public Node<E> getTail(){
-		return tail;
-	}
+  	public void setTail(Node tail){
+  		this.tail = tail;
+  	}
 
-	public int getSize(){
-		return size;
-	}
+  	public Node getTail(){
+  		return tail;
+  	}
+
+  	public int getSize(){
+  		return size;
+  	}
 }

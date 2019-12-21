@@ -1,35 +1,31 @@
-public class Node<E>{
+public class Node{
 
-	    private E data;				// The data that node stores.
+	    private int data;				// The data that node stores.
 
-        private Node<E> next;		// The address of next node 
+        private Node next;		// The address of next node
 
 
        	// constructor for Node class
-        public Node(E data, Node<E> next) {
+        public Node(int data, Node next) {
         	this.data = data;
         	this.next = next;
         }
 
         // getter and setter methods for instance variables
-        public void setData(E data){
+        public void setData(int data){
         	this.data = data;
         }
 
-        public E getData(){
+        public int getData(){
         	return data;
         }
 
-        public void setNext(Node<E> next){
+        public void setNext(Node next){
         	this.next = next;
         }
 
-        public Node<E> getNext(){
+        public Node getNext(){
         	return next;
         }
 
-        // toString for displaying the data in node
-        public String toString(){
-        	return data.toString();
-        }
 }
