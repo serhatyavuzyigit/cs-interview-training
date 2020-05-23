@@ -1,41 +1,77 @@
-import java.util.List;
-import java.util.ArrayList;
-
 public class MyQueue<E>{
 
-    private List<E> queueList;      // used list to store elements
-    private int size;               // size of queue
+    private static class MyQueueNode<E> {
 
-    public MyQueue(){
-        queueList = new ArrayList<>();
-        size = 0;
-    }
+        private E data;
+        private MyQueueNode<E> next;
 
-    public void add(E data){
-        queueList.add(data);
-        size ++;
-    }
-
-    public E remove(){
-        E data = queueList.get(0);
-        queueList.remove(0);
-        size--;
-        return data;
-    }
-
-    public E peek(){
-        return queueList.get(0);
-    }
-
-    public boolean isEmpty(){
-        return size == 0;
-    }
-
-    public void printQueue(){
-        for(int i=0; i<size; i++){
-            System.out.print(queueList.get(i) + " ");
+        public MyQueueNode(E data) {
+            this.data = data;
+            this.next = null;
         }
-        System.out.println();
+
+        public void setData(E data) { data = data; }
+
+        public E getData() { return data; }
+
+        public void setNext(MyQueueNode node) { next = node; }
+
+        public MyQueueNode getNext() { return next; }
     }
 
+    private MyQueueNode<E> head;
+    private MyQueueNode<E> tail;
+
+    public MyQueue() {
+        head = new MyQueueNode<>(null);
+        tail = new MyQueueNode<>(null);
+    }
+
+    public void enqueue(E data) {
+        MyQueueNode<E> node = new MyQueueNode<>(data);
+        if(tail.getData() == null) {
+            head.setNext(node);
+            tail = node;
+        } else {
+            tail.setNext(node);
+            tail = node;
+        }
+    }
+
+    public E dequeue() {
+        if(head.getNext() == null) {
+            System.out.println("There is no element in queue");
+            return null;
+        } else {
+            MyQueueNode<E> top = head.getNext();
+            MyQueueNode<E> secondTop = top.getNext();
+            head.setNext(secondTop);
+            return top.getData();
+        }
+    }
+
+    public E peek() {
+        if(head.getNext() == null) {
+            System.out.println("There is no element in queue");
+            return null;
+        } else {
+            MyQueueNode<E> top = head.getNext();
+            return top.getData();
+        }
+    }
+
+    public void printContent() {
+        String content = "";
+        MyQueueNode<E> temp = head.getNext();
+        while(temp != null) {
+            content += temp.getData() + " ";
+            temp = temp.getNext();
+        }
+
+        System.out.println(content);
+    }
+
+    public boolean isEmpty() {
+        return head.getNext() == null;
+    }
 }
