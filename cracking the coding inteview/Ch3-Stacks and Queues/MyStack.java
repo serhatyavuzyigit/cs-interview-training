@@ -1,41 +1,66 @@
-import java.util.List;
-import java.util.ArrayList;
+public class MyStack<E> {
 
-public class MyStack<E>{
+    private static class MyStackNode<E> {
 
-    private List<E> stackList;      // used list to store elements
-    private int size;               // size of stack
+        private E data;
+        private MyStackNode<E> next;
 
-    public MyStack(){
-        stackList = new ArrayList<>();
-        size = 0;
-    }
-
-    public void push(E data){
-        stackList.add(data);
-        size++;
-    }
-
-    public E pop(){
-        E data = stackList.get(size - 1);
-        stackList.remove(size - 1);
-        size--;
-        return data;
-    }
-
-    public E peek(){
-        return stackList.get(size - 1);
-    }
-
-    public boolean isEmpty(){
-        return size == 0;
-    }
-
-    public void printStack(){
-        for(int i=size-1; i>=0; i--){
-            System.out.print(stackList.get(i) + " ");
+        public MyStackNode(E data) {
+            this.data = data;
+            this.next = null;
         }
-        System.out.println();
+
+        public void setData(E data) { data = data; }
+
+        public E getData() { return data; }
+
+        public void setNext(MyStackNode node) { next = node; }
+
+        public MyStackNode getNext() { return next; }
     }
 
+    private MyStackNode<E> head;
+
+    public MyStack() {
+        head = new MyStackNode<>(null);
+    }
+
+    public void push(E data) {
+        MyStackNode<E> node = new MyStackNode<>(data);
+        node.setNext(head.getNext());
+        head.setNext(node);
+    }
+
+    public E pop() {
+        if(head.getNext() == null) {
+            System.out.println("There is no element in stack");
+            return null;
+        } else {
+            MyStackNode<E> top = head.getNext();
+            MyStackNode<E> secondTop = top.getNext();
+            head.setNext(secondTop);
+            return top.getData();
+        }
+    }
+
+    public E top() {
+        if(head.getNext() == null) {
+            System.out.println("There is no element in stack");
+            return null;
+        } else {
+            MyStackNode<E> top = head.getNext();
+            return top.getData();
+        }
+    }
+
+    public void printContent() {
+        String content = "";
+        MyStackNode<E> temp = head.getNext();
+        while(temp != null) {
+            content += temp.getData() + " ";
+            temp = temp.getNext();
+        }
+
+        System.out.println(content);
+    }
 }
