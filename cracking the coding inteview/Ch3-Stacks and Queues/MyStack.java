@@ -63,4 +63,8 @@ public class MyStack<E> {
 
         System.out.println(content);
     }
+
+    public boolean isEmpty() {
+        return head.getNext() == null;
+    }
 }
