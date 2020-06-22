@@ -33,6 +33,34 @@ public class Heap {
         heapList.set(index, temp);
     }
 
+    public int getMin() { return heapList.get(0); }
+
+    public int remove(int i) {
+        int temp = heapList.get(i);
+        heapList.set(i, heapList.get(size-1));
+        size--;
+        downHeapify(i);
+        return temp;
+    }
+
+    private void downHeapify(int ind) {
+        int temp = heapList.get(ind);
+        int child;
+        while(2*ind+1 <size) {
+            int leftChild = heapList.get(left(ind));
+            int rightChild = heapList.get(right(ind));
+            if (leftChild < rightChild) child = left(ind);
+            else child = right(ind);
+
+            if (temp > heapList.get(child)) {
+                heapList.set(ind, heapList.get(child));
+                ind = child;
+            } else break;
+        }
+        heapList.set(ind, temp);
+
+    }
+
     public void printHeap() {
         String content = "";
         for(int i=0; i<size; i++) {
