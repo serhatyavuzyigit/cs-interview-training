@@ -2,8 +2,8 @@ public class GivenArrayIsHeap {
 
     public static void main(String[] args) {
         
-        int [] minHeap = {7, 8, 12, 17};
-        System.out.println(isMaxHeap(minHeap));
+        int [] minHeap = {2, 7, 3, 9, 15, 6, 27, 30, 25, 52, 55, 21, 12, 33, 28};
+        System.out.println(isMinHeap(minHeap));
 
     }
 
