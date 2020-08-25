@@ -2,29 +2,30 @@
 
 class ValidParentheses {
     public boolean isValid(String s) {
+        if(s.equals(""))
+            return true;
         
-        if(s.length()%2 == 1) return false;
+        String closeChars = ")]}";
+        String openChars = "([{";
         
-        Stack<Character> stack = new Stack<>();
-        String openings = "({[";
-        String closings = ")}]";
-        
+        Stack<Character> charsStack = new Stack<>();
         for(int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
-            if(openings.indexOf(c) != -1) {
-                stack.push(c);
+            if(openChars.indexOf(c) != -1) {
+                charsStack.push(c);
             } else {
-                if(stack.empty()) return false;
-                
-                char popedElement = stack.pop();
-                if(popedElement=='(' && c!=')') return false;
-                if(popedElement=='{' && c!='}') return false;
-                if(popedElement=='[' && c!=']') return false;
+                if(charsStack.empty())
+                    return false;
+                char poppedChar = charsStack.pop();
+                if(openChars.indexOf(poppedChar) != closeChars.indexOf(c))
+                    return false;
             }
         }
         
-        if(stack.empty()) return true;
+        if(charsStack.empty())
+            return true;
         
         return false;
+        
     }
 }
