@@ -53,13 +53,8 @@ int main() {
             {
                 p1++;
             }
-            else if(apart < applc)
+            else
             {
-                p2++;
-            }
-            else 
-            {
-                p1++;
                 p2++;
             }
         }
