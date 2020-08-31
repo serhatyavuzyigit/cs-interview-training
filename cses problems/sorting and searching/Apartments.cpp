@@ -3,18 +3,21 @@
 #include <algorithm>
 using namespace std;
 
+#define ll long long
+#define ui unsigned int
+
 int main() {
 
-    unsigned int n, m;
-    long long k;
+    ui n, m;
+    ll k;
 
     cin >> n >> m >> k;
 
-    long long applicants[n];
-    long long apartments[m];
+    ll applicants[n];
+    ll apartments[m];
 
-    unsigned int i;
-    long long j;
+    ui i;
+    ll j;
     for(i=0; i<n; i++) 
     {    
         cin >> j;
@@ -30,16 +33,16 @@ int main() {
     sort(applicants, applicants+n); 
     sort(apartments, apartments+m); 
     
-    unsigned int counter = 0;
-    unsigned int p1 = 0;
-    unsigned int p2 = 0;
+    ui counter = 0;
+    ui p1 = 0;
+    ui p2 = 0;
 
     while(p1<n && p2<m) 
     {
-        long long applc = applicants[p1];
-        long long apart = apartments[p2];
+        ll applc = applicants[p1];
+        ll apart = apartments[p2];
 
-        long long diff = applc - apart;
+        ll diff = applc - apart;
 
         if((-1*k)<=diff && diff<=k) 
         {
