@@ -59,6 +59,6 @@ public class LargestProduct {
         }
 
         System.out.println(maxProd);
-        // 23514624000
+        
     }
 }
