@@ -1,8 +1,8 @@
-package project_euler;
-
 public class LongestCollatzSequence {
 
     public static void main(String[] args) {
+        
+        // result is 837799 with 525 sequence
 
         long max = 0;
         long res = 0;
