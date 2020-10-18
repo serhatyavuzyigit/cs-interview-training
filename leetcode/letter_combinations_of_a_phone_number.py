@@ -24,10 +24,10 @@ def letterCombinations(out_list, digits):
     if out_list == []:
         out_list = phone_map[digits[0]]
         digits = digits[1:]
-        letterCombinations(out_list, digits)
+        return letterCombinations(out_list, digits)
     else:
         out_list = appendLettersToList(out_list, digits[0])
         digits = digits[1:]
-        letterCombinations(out_list, digits)
+        return letterCombinations(out_list, digits)
 
     
