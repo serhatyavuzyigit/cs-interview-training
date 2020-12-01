@@ -1,7 +1,3 @@
-package Graph;
-
-
-import LinkedList.SinglyLinkedList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,13 +10,12 @@ public class Graph<E> {
 
         private E data;     // data stored in vertex
 
-        private SinglyLinkedList<Vertex<E>> adjacencyLinkedList;     // the linked-list of adjacent vertices
 
-        private List<Vertex<E>> adjacencyList;                      // the list of adjecent vertices
+        private List<Vertex<E>> adjacencyList;           // the list of adjecent vertices
 
         public Vertex(E data) {  // constructor of class
             this.data = data;
-            this.adjacencyLinkedList = new SinglyLinkedList<>();
+            this.adjacencyLinkedList = new ArrayList<>();
             this.adjacencyList = new ArrayList<>();
             adjacencyLinkedList.add(this);
             adjacencyList.add(this);

@@ -1,5 +1,3 @@
-package Tree;
-
 public class BinaryTree<E> {
 
     private static class Node<E> {
