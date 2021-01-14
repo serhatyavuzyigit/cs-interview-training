@@ -9,7 +9,7 @@ public class LinkedList{
 
     // constructor of LinkedList class
     public LinkedList(){
-    	head = null;
+    	head = null;z
     	tail = null;
     	size = 0;
     }
